@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Circle Of Funk</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left" style="margin-bottom: 10px">
+                @Html.ActionLink(" ", "Index", "Home", null, new { @class = "logo" })
+            </div>
+            @{ Html.RenderPartial("_AccordionMenu"); }
+        </div>
+    </header>
+    <div id="body">
+        <section class="content-wrapper main-content clear-fix">
+            <div class="fadebar float-left" style="text-align: center">@ViewBag.Title</div>
+            @RenderBody()
+        </section>
+        @Html.Hidden("slideId", (int)@ViewBag.CurrentSlide)
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - Circle Of Funk</p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/site")
+
+    <script>
+
+        $(function () {
+            var selectedPage = $('#slideId').val();
+
+            var options = {
+                containerWidth: 870,
+                containerHeight: 180,
+                activateOn: 'click',
+                theme: 'dark',
+                firstSlide: selectedPage,
+                rounded: true,
+                onSlideAnimComplete: function () {
+                    var closeli = this.closest("li");
+                    $('#slideId').val(closeli.attr("id"));
+                    OpenLink(closeli.data("link"));
+                },
+
+                easing: 'easeInOutQuart'
+            };
+
+            $('#accordianmenu').liteAccordion(options);
+        });
+    </script>
+    @RenderSection("scripts", false)
+</body>
+</html>

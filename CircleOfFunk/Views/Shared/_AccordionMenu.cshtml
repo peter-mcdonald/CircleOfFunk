@@ -1,0 +1,69 @@
+﻿@using CircleOfFunk.Helpers
+<div id="accordianmenu" class="float-left">
+    <ol>
+        <li id="1" data-link="newslink">
+            <h2><span>Latest News</span></h2>
+            <div>
+                <figure>
+                    @Html.ActionLink(" ", "Index", "Home", null, new { @class = "news", @id="newslink" })
+                </figure>
+            </div>
+        </li>
+        <li id="2" data-link="slappedupsoullink">
+            <h2><span>Slapped Up Soul</span></h2>
+            <div>
+                <figure>
+                    @Html.ActionLink(" ", "Index", "SlappedUpSoul", null, new { @class = "slappedupsoul", @id="slappedupsoullink" })
+                </figure>
+            </div>
+        </li>
+        <li id="3" data-link="discographylink">
+            <h2><span>Discography</span></h2>
+            <div>
+                <figure>
+                    @Html.ActionLink(" ", "Index", "Discography", null, new { @class = "discography" , @id="discographylink" })
+                </figure>
+            </div>
+        </li>
+        <li id="4" data-link="sociallink">
+            <h2><span>Social</span></h2>
+            <div>
+                <figure>
+                    @Html.ActionLink(" ", "Index", "Social", null, new { @class = "social", @id="sociallink" })
+                </figure>
+            </div>
+        </li>
+        <li id="5" data-link="traxsourcelink">
+            <h2><span>Traxsource</span></h2>
+            <div>
+                <figure>
+                    @Html.ExternalLink(" ", "http://www.traxsource.com/artist/6725/circle-of-funk", "traxsource", "traxsourcelink")
+                </figure>
+            </div>
+        </li>
+        <li id="6" data-link="biographylink">
+            <h2><span>Biography</span></h2>
+            <div>
+                <figure>
+                    @Html.ActionLink(" ", "Index", "Biography", null, new { @class = "biography", @id="biographylink" })
+                </figure>
+            </div>
+        </li>
+        <li id="7" data-link="soundcloudlink">
+            <h2><span>Soundcloud</span></h2>
+            <div>
+                <figure>
+                    @Html.ActionLink(" ", "Index", "Audio", null, new { @class = "audio-image", @id="soundcloudlink" })
+                </figure>
+            </div>
+        </li>
+        <li id="8" data-link="contactlink">
+            <h2><span>Contact</span></h2>
+            <div>
+                <figure>
+                    @Html.ActionLink(" ", "Index", "Contact", null, new { @class = "contact", @id="contactlink" })
+                </figure>
+            </div>
+        </li>
+    </ol>
+</div>
