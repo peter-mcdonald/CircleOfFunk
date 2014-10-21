@@ -739,7 +739,7 @@ aside
 .scrollable
 {
     width: 90%;
-    overflow-y: auto;
+    overflow-y: auto !important;
     color: whitesmoke;
 }
 

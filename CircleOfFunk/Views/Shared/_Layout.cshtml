@@ -18,10 +18,13 @@
     </header>
     <div id="body">
         <section class="content-wrapper main-content clear-fix">
-            <div class="fadebar float-left" style="text-align: center">@ViewBag.Title</div>
-            @RenderBody()
+            <div id="pageTitle" class="fadebar float-left" style="text-align: center">@RenderSection("title")</div>
+            <div id="sentMessage" class="border-message float-left">
+                Thank you for your message!
+            </div>
+            <div id="content" class="border float-left">
+            </div>
         </section>
-        @Html.Hidden("slideId", (int)@ViewBag.CurrentSlide)
     </div>
     <footer>
         <div class="content-wrapper">
@@ -32,31 +35,11 @@
     </footer>
 
     @Scripts.Render("~/bundles/site")
-
-    <script>
-
-        $(function () {
-            var selectedPage = $('#slideId').val();
-
-            var options = {
-                containerWidth: 870,
-                containerHeight: 180,
-                activateOn: 'click',
-                theme: 'dark',
-                firstSlide: selectedPage,
-                rounded: true,
-                onSlideAnimComplete: function () {
-                    var closeli = this.closest("li");
-                    $('#slideId').val(closeli.attr("id"));
-                    OpenLink(closeli.data("link"));
-                },
-
-                easing: 'easeInOutQuart'
-            };
-
-            $('#accordianmenu').liteAccordion(options);
-        });
-    </script>
     @RenderSection("scripts", false)
 </body>
 </html>
+<script>
+    $(function () {
+        initialiseSite();
+    });
+</script>

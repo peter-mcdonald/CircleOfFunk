@@ -1,59 +1,60 @@
 ﻿@using CircleOfFunk.Helpers
 <div id="accordianmenu" class="float-left">
     <ol>
-        <li id="1" data-link="newslink">
+        <li id="1" data-page="news">
             <h2><span>Latest News</span></h2>
             <div>
                 <figure>
-                    @Html.ActionLink(" ", "Index", "Home", null, new { @class = "news", @id="newslink" })
+                    <img src="~/Images/Accordion/News.jpg"/>
                 </figure>
             </div>
         </li>
-        <li id="2" data-link="slappedupsoullink">
+        <li id="2" data-page="slappedup">
             <h2><span>Slapped Up Soul</span></h2>
             <div>
                 <figure>
-                    @Html.ActionLink(" ", "Index", "SlappedUpSoul", null, new { @class = "slappedupsoul", @id="slappedupsoullink" })
+                    <img src="~/Images/Accordion/Slappedupsoul.jpg"/>
                 </figure>
             </div>
         </li>
-        <li id="3" data-link="discographylink">
+        <li id="3" data-page="discography">
             <h2><span>Discography</span></h2>
             <div>
                 <figure>
-                    @Html.ActionLink(" ", "Index", "Discography", null, new { @class = "discography" , @id="discographylink" })
+                    <img src="~/Images/Accordion/Discography.jpg"/>
                 </figure>
             </div>
         </li>
-        <li id="4" data-link="sociallink">
+        <li id="4" data-page="social">
             <h2><span>Social</span></h2>
             <div>
                 <figure>
-                    @Html.ActionLink(" ", "Index", "Social", null, new { @class = "social", @id="sociallink" })
+                    <img src="~/Images/Accordion/Social.jpg"/>
                 </figure>
             </div>
         </li>
-        <li id="5" data-link="traxsourcelink">
+        <li id="5">
             <h2><span>Traxsource</span></h2>
             <div>
                 <figure>
                     @Html.ExternalLink(" ", "http://www.traxsource.com/artist/6725/circle-of-funk", "traxsource", "traxsourcelink")
+                    <figcaption>Click me!</figcaption>
                 </figure>
             </div>
         </li>
-        <li id="6" data-link="biographylink">
+        <li id="6" data-page="biography">
             <h2><span>Biography</span></h2>
             <div>
                 <figure>
-                    @Html.ActionLink(" ", "Index", "Biography", null, new { @class = "biography", @id="biographylink" })
+                    <img src="~/Images/Accordion/Bio.jpg"/>
                 </figure>
             </div>
         </li>
-        <li id="7" data-link="soundcloudlink">
+        <li id="7" data-page="soundcloud">
             <h2><span>Soundcloud</span></h2>
             <div>
                 <figure>
-                    @Html.ActionLink(" ", "Index", "Audio", null, new { @class = "audio-image", @id="soundcloudlink" })
+                    <img src="~/Images/Accordion/Audio.jpg"/>
                 </figure>
             </div>
         </li>

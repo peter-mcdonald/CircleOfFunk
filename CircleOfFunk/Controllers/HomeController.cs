@@ -15,11 +15,5 @@ namespace CircleOfFunk.Controllers
         {
             return new NewsItemsBuilder().Build();
         }
-
-        [ChildActionOnly]
-        public override void SetViewBagMenu()
-        {
-            ViewBag.CurrentSlide = (int)Menu.Slides.News;
-        }
     }
 }

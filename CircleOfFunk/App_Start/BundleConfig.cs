@@ -12,13 +12,17 @@ namespace CircleOfFunk
                             .Include("~/Scripts/jquery.easing.1.3.js")
                             .Include("~/Scripts/liteaccordion.jquery.js")
                             .Include("~/Scripts/spin.js")
+                            .Include("~/Scripts/jquery.easy-ticker.js")
+                            .Include("~/Scripts/facebook-sdk.js")
+                            //.Include("~/Scripts/twitter-widgets.js")
+                            .Include("~/Scripts/famax-fix.js")
                             .Include("~/Scripts/CircleOfFunk.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/newsticker")
-                            .Include("~/Scripts/jquery.easy-ticker.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/newsticker")
+            //                .Include("~/Scripts/jquery.easy-ticker.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/famax")
-                            .Include("~/Scripts/famax-fix.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/famax")
+            //                .Include("~/Scripts/famax-fix.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -50,7 +54,7 @@ namespace CircleOfFunk
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
-            BundleTable.EnableOptimizations = true;
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }

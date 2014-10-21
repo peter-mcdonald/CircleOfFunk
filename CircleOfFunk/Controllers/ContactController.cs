@@ -12,6 +12,9 @@ namespace CircleOfFunk.Controllers
         public ActionResult Index()
         {
             ViewBag.CaptchaMessage = string.Empty;
+
+            //var res = RenderViewToString("Index", new Contact());
+
             return View(new Contact());
         }
 
@@ -62,12 +65,6 @@ namespace CircleOfFunk.Controllers
             }
 
             return captchaValidation;
-        }
-
-        [ChildActionOnly]
-        public override void SetViewBagMenu()
-        {
-            ViewBag.CurrentSlide = (int)Menu.Slides.Contact;
         }
     }
 

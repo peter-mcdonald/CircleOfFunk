@@ -8,9 +8,7 @@
     ViewBag.Title = "Contact Us";
 }
 
-<div id="sentMessage" class="border-message float-left">
-    Thank you for your message!
-</div>
+
 
 <div id="contactBorder" class="border float-left">
     @using (Ajax.BeginForm("index", "contact", new AjaxOptions() { HttpMethod = "Post", OnBegin = "SetContactData", OnSuccess = "CheckCaptchaMessage" }, new { id = "contactForm" }))

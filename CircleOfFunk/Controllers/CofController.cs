@@ -1,19 +1,47 @@
 ﻿using System;
+using System.IO;
 using System.Web.Mvc;
 
 namespace CircleOfFunk.Controllers
 {
     public class CofController : Controller
     {
-        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        protected string RenderViewToString(string viewName, object model)
         {
-            SetViewBagMenu();
-            base.OnActionExecuted(filterContext);
+            if (string.IsNullOrEmpty(viewName))
+            {
+                throw new ArgumentNullException("viewName");
+            }
+
+            ViewData.Model = model;
+
+            using (var sw = new StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindView(ControllerContext, viewName, string.Empty);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+
+                return sw.GetStringBuilder().ToString();
+            }
         }
 
-        public virtual void SetViewBagMenu()
+        protected string RenderPartialViewToString(string viewName, object model)
         {
-            throw new NotImplementedException("SetViewBagMenu has not been overridden");
+            if (string.IsNullOrEmpty(viewName))
+            {
+                throw new ArgumentNullException("viewName");
+            }
+
+            ViewData.Model = model;
+
+            using (var sw = new StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+
+                return sw.GetStringBuilder().ToString();
+            }
         }
     }
 }

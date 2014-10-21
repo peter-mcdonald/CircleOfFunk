@@ -47,7 +47,7 @@ namespace CircleOfFunk.Builders
 
         string FormatNewsItems(IEnumerable<NewsItem> newsItems)
         {
-            var newslist = new StringBuilder();
+            var newslist = new StringBuilder(@"<ul>");
 
             foreach (var newsItem in newsItems)
             {
@@ -55,6 +55,8 @@ namespace CircleOfFunk.Builders
                 newslist.Append(CreateExternalLink(newsItem.LinkUrl, newsItem.Title));
                 newslist.Append("<p>" + newsItem.Body + "</p></li>");
             }
+
+            newslist.Append(@"</ul>");
 
             SessionHelper.Add("NewsList", newslist.ToString());
             return newslist.ToString();

@@ -8,11 +8,5 @@ namespace CircleOfFunk.Controllers
         {
             return View();
         }
-
-        [ChildActionOnly]
-        public override void SetViewBagMenu()
-        {
-            ViewBag.CurrentSlide = (int)Menu.Slides.Audio;
-        }
     }
 }

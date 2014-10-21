@@ -262,10 +262,14 @@
     <Content Include="Images\Twitter2.png" />
     <Content Include="Recaptcha for .NET 1.6.0\v4.0\Recaptcha.Web.dll" />
     <Content Include="Scripts\CircleOfFunk.js" />
+    <Content Include="Scripts\facebook-sdk.js" />
     <Content Include="Scripts\famax-fix-min.js" />
     <Content Include="Scripts\famax-fix.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery.easy-ticker.min.js.map">
+      <DependentUpon>jquery.easy-ticker.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
@@ -283,6 +287,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\spin.js" />
     <Content Include="Scripts\spin.min.js" />
+    <Content Include="Scripts\twitter-widgets.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -319,6 +324,7 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Shared\_ContactDetails.cshtml" />
     <Content Include="Views\Shared\_EmailSentMessage.cshtml" />
+    <Content Include="Views\Shared\_Social.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

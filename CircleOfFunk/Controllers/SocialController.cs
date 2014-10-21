@@ -1,18 +1,10 @@
-﻿using System.Web.Mvc;
-
-namespace CircleOfFunk.Controllers
+﻿namespace CircleOfFunk.Controllers
 {
     public class SocialController : CofController
     {
-        public ActionResult Index()
+        public string GetSocialView()
         {
-            return View();
-        }
-
-        [ChildActionOnly]
-        public override void SetViewBagMenu()
-        {
-            ViewBag.CurrentSlide = (int)Menu.Slides.Social;
+            return RenderPartialViewToString("_Social", null);
         }
     }
 }
