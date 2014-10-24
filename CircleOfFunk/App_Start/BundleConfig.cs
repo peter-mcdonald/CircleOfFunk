@@ -16,6 +16,7 @@ namespace CircleOfFunk
                             .Include("~/Scripts/facebook-sdk.js")
                             //.Include("~/Scripts/twitter-widgets.js")
                             .Include("~/Scripts/famax-fix.js")
+                            .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*")
                             .Include("~/Scripts/CircleOfFunk.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/newsticker")
@@ -27,9 +28,9 @@ namespace CircleOfFunk
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+            //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+            //            "~/Scripts/jquery.unobtrusive*",
+            //            "~/Scripts/jquery.validate*"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -54,7 +55,7 @@ namespace CircleOfFunk
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
-            //BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

@@ -12,16 +12,6 @@
 var lastPage = "";
 
 function initialiseSite() {
-    
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '936539446373269',
-            xfbml: true,
-            version: 'v2.0'
-        });
-    };
-
-    TwitterFollow(document, 'script', 'twitter-wjs');
 
     var options = {
         containerWidth: 870,
@@ -38,6 +28,16 @@ function initialiseSite() {
     };
 
     $('#accordianmenu').liteAccordion(options);
+    TwitterFollow(document, 'script', 'twitter-wjs');
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '936539446373269',
+            xfbml: true,
+            version: 'v2.0'
+        });
+    };
+    
     showPage("news");
 }
 
@@ -77,6 +77,10 @@ function showPage(currentPage) {
             
         case "soundcloud":
             AudioPage();
+            break;
+            
+        case "contact":
+            contactPage();
             break;
     }
 }
@@ -181,10 +185,22 @@ function setHeader(xhr) {
     }
 }
 
+function contactPage() {
+    startSpinner();
+    setContentClasses("border float-left");
+
+    $.post("/Contact/GetContactView", function(data) {
+        stopSpinner();
+        appendData(data);
+    });
+
+
+}
+
 function SetContactData() {
     $("#contactdata").hide();
     setCaptchaMessage("");
-    startSpinner("contactus");
+    startSpinner();
     return true;
 }
 

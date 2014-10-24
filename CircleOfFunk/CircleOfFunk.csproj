@@ -325,6 +325,7 @@
     <Content Include="Views\Shared\_ContactDetails.cshtml" />
     <Content Include="Views\Shared\_EmailSentMessage.cshtml" />
     <Content Include="Views\Shared\_Social.cshtml" />
+    <Content Include="Views\Shared\_Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

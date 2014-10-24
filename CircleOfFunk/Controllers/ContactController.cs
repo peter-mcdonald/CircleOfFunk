@@ -9,18 +9,16 @@ namespace CircleOfFunk.Controllers
 {
     public class ContactController : CofController
     {
-        public ActionResult Index()
+        public string GetContactView()
         {
             ViewBag.CaptchaMessage = string.Empty;
 
-            //var res = RenderViewToString("Index", new Contact());
-
-            return View(new Contact());
+            return RenderPartialViewToString("_Contact", new Contact());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public String Index(Contact model)
+        public String ContactUs(Contact model)
         {
             var captchaValid = IsCaptchaValid();
 

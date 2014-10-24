@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Mvc.Ajax
+@using Recaptcha.Web
+@using Recaptcha.Web.Mvc
+@using CircleOfFunk.Helpers
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,7 +23,7 @@
     </header>
     <div id="body">
         <section class="content-wrapper main-content clear-fix">
-            <div id="pageTitle" class="fadebar float-left" style="text-align: center">@RenderSection("title")</div>
+            <div id="pageTitle" class="fadebar float-left" style="text-align: center">@RenderSection("title",false)</div>
             <div id="sentMessage" class="border-message float-left">
                 Thank you for your message!
             </div>
@@ -35,7 +40,7 @@
     </footer>
 
     @Scripts.Render("~/bundles/site")
-    @RenderSection("scripts", false)
+    @*@RenderSection("scripts", false)*@
 </body>
 </html>
 <script>
