@@ -20,9 +20,17 @@ function initialiseSite() {
         theme: 'dark',
         firstSlide: 1,
         rounded: true,
+        onTriggerSlide: function () {
+            this.find('figcaption').fadeOut();
+        },
         onSlideAnimComplete: function () {
             var closeli = this.closest("li");
             showPage(closeli.data("page"));
+            this.find('figcaption').fadeIn('fast');
+            that = this;
+            setTimeout(function() {
+                that.find('figcaption').fadeOut('slow');
+            }, 1500);
         },
         easing: 'easeInOutQuart'
     };
@@ -87,6 +95,7 @@ function showPage(currentPage) {
 
 function HomePage() {
 
+    setPageTitle("Latest News");
     setContentClasses("border vticker float-left");
     startSpinner();
 
@@ -108,6 +117,7 @@ function HomePage() {
 }
 
 function SlappedUpPage() {
+    setPageTitle("Slapped Up Soul");
     startSpinner();
     setContentClasses("border scrollable float-left");
 
@@ -118,7 +128,7 @@ function SlappedUpPage() {
 }
 
 function DiscographyPage() {
-
+    setPageTitle("Discography");
     setContentClasses("border float-left scrollable");
     startSpinner();
     $.post("/discography/GetDiscography", function (data) {
@@ -128,6 +138,7 @@ function DiscographyPage() {
 }
 
 function SocialPage() {
+    setPageTitle("Social Networks");
     $("#content").css("height", "595px");
     startSpinner();
     
@@ -142,7 +153,7 @@ function SocialPage() {
 }
 
 function BiographyPage() {
-    
+    setPageTitle("Biography");
     setContentClasses("border float-left scrollable");
     startSpinner("biowrapper");
 
@@ -153,7 +164,7 @@ function BiographyPage() {
 }
 
 function AudioPage() {
-
+    setPageTitle("Soundclound");
     startSpinner();
     setContentClasses("border scrollable float-left");
     $.ajax({
@@ -186,21 +197,38 @@ function setHeader(xhr) {
 }
 
 function contactPage() {
+    setPageTitle("Contact Us");
     startSpinner();
     setContentClasses("border float-left");
 
     $.post("/Contact/GetContactView", function(data) {
         stopSpinner();
         appendData(data);
+        setCaptcha();
+        // set up validator
+        $.validator.unobtrusive.parse($("#contactForm"));
     });
+}
 
+function setPageTitle(title) {
+    $("#pageTitle").text(title);
+}
 
+function setCaptcha() {
+    Recaptcha.create("6LfLEfsSAAAAANc0vEvzRFg-OSOVKQ92fz6dJoy2",
+        "recaptcha",
+        {
+            theme: "blackglass",
+            callback: Recaptcha.focus_response_field
+        }
+    );
 }
 
 function SetContactData() {
     $("#contactdata").hide();
     setCaptchaMessage("");
-    startSpinner();
+    //startSpinner();
+    spinner.spin(document.getElementById("content"));
     return true;
 }
 
