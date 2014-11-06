@@ -167,8 +167,6 @@
     <Compile Include="Builders\DiscographyBuilder.cs" />
     <Compile Include="Controllers\SlappedUpSoulController.cs" />
     <Compile Include="Controllers\SocialController.cs" />
-    <Compile Include="Enums\MenuEnum.cs" />
-    <Compile Include="Exceptions\FailedMessageException.cs" />
     <Compile Include="Extentions\TagExtentions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,13 +242,14 @@
     <Content Include="Images\fadebar.jpg" />
     <Content Include="Images\famax_link.png" />
     <Content Include="Images\famax_video.png" />
-    <None Include="Properties\PublishProfiles\CoF Publish.pubxml" />
+    <None Include="Properties\PublishProfiles\CoF Publish.pubxml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\Accordion\News.jpg" />
     <Content Include="Images\Accordion\Slappedupsoul.jpg" />
     <Content Include="Images\Accordion\Social.jpg" />
     <Content Include="Images\Banner\Banner.jpg" />
-    <Content Include="Images\facebook.png" />
     <Content Include="Images\Loader\famax-loader.gif" />
     <Content Include="Images\News\NewsItem.png" />
     <Content Include="Images\Releases\doubletrouble.jpg" />
@@ -258,11 +257,8 @@
     <Content Include="Images\Releases\invisible.jpg" />
     <Content Include="Images\Releases\washaway.jpg" />
     <Content Include="Images\Releases\weighaton.jpg" />
-    <Content Include="Images\Twitter.png" />
-    <Content Include="Images\Twitter2.png" />
     <Content Include="Recaptcha for .NET 1.6.0\v4.0\Recaptcha.Web.dll" />
     <Content Include="Scripts\CircleOfFunk.js" />
-    <Content Include="Scripts\facebook-sdk.js" />
     <Content Include="Scripts\famax-fix-min.js" />
     <Content Include="Scripts\famax-fix.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -287,7 +283,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\spin.js" />
     <Content Include="Scripts\spin.min.js" />
-    <Content Include="Scripts\twitter-widgets.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -297,33 +292,12 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Social\Index.cshtml" />
-    <Content Include="Views\Discography\Index.cshtml" />
-    <Content Include="Views\SlappedUpSoul\Index.cshtml" />
-    <Content Include="Views\Biography\Index.cshtml" />
     <Content Include="Views\Shared\_AccordionMenu.cshtml" />
-    <Content Include="Views\Audio\Index.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\Shared\_ContactDetails.cshtml" />
-    <Content Include="Views\Shared\_EmailSentMessage.cshtml" />
     <Content Include="Views\Shared\_Social.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
   </ItemGroup>
