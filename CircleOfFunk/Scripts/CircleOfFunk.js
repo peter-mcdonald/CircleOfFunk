@@ -150,6 +150,7 @@ function SocialPage() {
         stopSpinner();
         appendData(data);
         twttr.widgets.load();
+        FB.XFBML.parse();
         prepareFamax();
     });
 }
