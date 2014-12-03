@@ -302,7 +302,6 @@
     <Content Include="Views\Shared\_Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
