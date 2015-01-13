@@ -48,6 +48,7 @@ function initialiseSite() {
     };
 
     $('#accordianmenu').liteAccordion(options);
+    $('#accordianmenu').fadeIn('fast');
     showPage("news");
 }
 
