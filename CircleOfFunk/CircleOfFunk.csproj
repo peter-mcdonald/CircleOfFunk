@@ -261,6 +261,16 @@
     <Content Include="Scripts\CircleOfFunk.js" />
     <Content Include="Scripts\famax-fix-min.js" />
     <Content Include="Scripts\famax-fix.js" />
+    <Content Include="Scripts\history.js\amplify.store.js" />
+    <Content Include="Scripts\history.js\history.adapter.dojo.js" />
+    <Content Include="Scripts\history.js\history.adapter.jquery.js" />
+    <Content Include="Scripts\history.js\history.adapter.mootools.js" />
+    <Content Include="Scripts\history.js\history.adapter.prototype.js" />
+    <Content Include="Scripts\history.js\history.adapter.yui.js" />
+    <Content Include="Scripts\history.js\history.adapter.zepto.js" />
+    <Content Include="Scripts\history.js\history.html4.js" />
+    <Content Include="Scripts\history.js\history.js" />
+    <Content Include="Scripts\history.js\json2.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery.easy-ticker.min.js.map">
@@ -300,6 +310,9 @@
     <Content Include="Views\Shared\_AccordionMenu.cshtml" />
     <Content Include="Views\Shared\_Social.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
+    <Content Include="Scripts\liteaccordion.jquery.min.js.map">
+      <DependentUpon>liteaccordion.jquery.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filters\" />

@@ -14,6 +14,8 @@ namespace CircleOfFunk
                             .Include("~/Scripts/spin.js")
                             .Include("~/Scripts/jquery.easy-ticker.js")
                             .Include("~/Scripts/famax-fix.js")
+                            .Include("~/Scripts/history/history.js")
+                            .Include("~/Scripts/history/history.adapter.jquery.js")
                             .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*")
                             .Include("~/Scripts/CircleOfFunk.js"));
 
@@ -43,7 +45,10 @@ namespace CircleOfFunk
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
+
+#if !DEBUG
             BundleTable.EnableOptimizations = true;
+#endif
         }
     }
 }

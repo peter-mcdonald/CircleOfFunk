@@ -83,11 +83,13 @@ function showPage(currentPage) {
             break;
 
         case "biography":
+            $('#accordianmenu').liteAccordion('show(0)');
             BiographyPage();
             break;
             
         case "soundcloud":
             AudioPage();
+            
             break;
             
         case "contact":
