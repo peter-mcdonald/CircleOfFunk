@@ -81,7 +81,9 @@
 
                 // show a slide
                 show: function (slideNumber) {
-                    header.eq(slideNumber).trigger('click.liteAccordion');
+                    if (slideNumber !== core.currentSlide) {
+                        header.eq(slideNumber).trigger('click.liteAccordion');
+                    }
                 },
 
                 // destroy plugin instance
@@ -425,9 +427,8 @@
             var rb = method.indexOf(')');
 
             if (lb > -1 && rb > -1) {
-                var params = method.substring(lb + 1, rb);
+                var params = Number(method.substring(lb + 1, rb));
                 var method2 = method.substring(0, lb);
-                alert("here " + method2 + " " + params);
                 instance[method2].call(elem, params);
             }
 

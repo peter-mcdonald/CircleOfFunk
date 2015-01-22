@@ -11,8 +11,41 @@
 
 var lastPage = "";
 var that;
+var storage;
+var historyJs;
+
+var arr = {
+    "news": "Home",
+    "slappedup": "Slapped Up Soul",
+    "discography": "Discography",
+    "biography": "Biography",
+    "social": "Social",
+    "soundcloud": "Audio",
+    "traxsource": "Traxsource",
+    "contact": "Contact Us"
+};
+
+pages = {
+    change: function (newPage) {
+        this.setAddress(arr[newPage], newPage);
+    },
+    home: function () {
+        this.setAddress("Welcome", "news");
+    },
+    replacewithhome: function () {
+        historyJs.replaceState(null, "Home", "?page=news");
+    },
+    setAddress: function (text, page) {
+        historyJs.pushState(null, text, "?page=" + page);
+    },
+    exist: function(page) {
+        return arr.hasOwnProperty(page);
+    }
+};
 
 function initialiseSite() {
+
+    storage = new Cache();
 
     window.fbAsyncInit = function () {
         FB.init({
@@ -37,7 +70,7 @@ function initialiseSite() {
         },
         onSlideAnimComplete: function () {
             var closeli = this.closest("li");
-            showPage(closeli.data("page"));
+            pages.change(closeli.data("page"));
             this.find('figcaption').fadeIn('fast');
             that = this;
             setTimeout(function() {
@@ -48,22 +81,44 @@ function initialiseSite() {
     };
 
     $('#accordianmenu').liteAccordion(options);
-    $('#accordianmenu').fadeIn('fast');
-    showPage("news");
+    $('#accordianmenu').fadeIn('slow');
+    initialiseHistory();
+    setFirstPage();
+}
+
+function initialiseHistory() {
+    historyJs = window.History;
+
+    historyJs.Adapter.bind(window, 'statechange', function () {
+        showPage(getPageFromUrl(historyJs.getState().url));
+    });
+}
+
+function setFirstPage() {
+    var state = historyJs.getState();
+
+    if (state.url.indexOf("?") === -1) {
+        pages.home();
+    } else {
+        var page = getPageFromUrl(historyJs.getState().url);
+
+        if (pages.exist(page)) {
+            showPage(page);
+        } else {
+            pages.replacewithhome();
+        }
+        
+    }
+}
+
+function getPageFromUrl(url) {
+    var parts = parseUri(url);
+    return parts.queryKey.page;
 }
 
 function showPage(currentPage) {
 
-    // Need to get the plugin to do this at some stage
-    if (lastPage === "news") {
-        $('.vticker').removeData();
-    }
-    
-    if (lastPage === "social") {
-        $("#content").removeAttr("style");
-    }
-
-    lastPage = currentPage;
+    setLastPage(currentPage);
     
     switch (currentPage) {
         case "news":
@@ -82,24 +137,43 @@ function showPage(currentPage) {
             SocialPage();
             break;
 
+        case "traxsource":
+            $('#accordianmenu').liteAccordion('show(4)');
+            break;
+
         case "biography":
-            $('#accordianmenu').liteAccordion('show(0)');
             BiographyPage();
             break;
-            
+
         case "soundcloud":
             AudioPage();
-            
             break;
             
         case "contact":
             contactPage();
             break;
+
+        default:
+            pages.replacewithhome();
     }
+}
+
+function setLastPage(currentPage) {
+
+    if (lastPage === "news") {
+        $('.vticker').removeData();
+    }
+
+    if (lastPage === "social") {
+        $("#content").removeAttr("style");
+    }
+
+    lastPage = currentPage;
 }
 
 function HomePage() {
 
+    $('#accordianmenu').liteAccordion('show(0)');
     setPageTitle("Latest News");
     setContentClasses("border vticker float-left");
     startSpinner();
@@ -122,6 +196,7 @@ function HomePage() {
 }
 
 function SlappedUpPage() {
+    $('#accordianmenu').liteAccordion('show(1)');
     setPageTitle("Slapped Up Soul");
     startSpinner();
     setContentClasses("border scrollable float-left");
@@ -133,6 +208,7 @@ function SlappedUpPage() {
 }
 
 function DiscographyPage() {
+    $('#accordianmenu').liteAccordion('show(2)');
     setPageTitle("Discography");
     setContentClasses("border float-left scrollable");
     startSpinner();
@@ -143,6 +219,7 @@ function DiscographyPage() {
 }
 
 function SocialPage() {
+    $('#accordianmenu').liteAccordion('show(3)');
     setPageTitle("Social Networks");
     $("#content").css("height", "595px");
     startSpinner();
@@ -159,6 +236,7 @@ function SocialPage() {
 }
 
 function BiographyPage() {
+    $('#accordianmenu').liteAccordion('show(5)');
     setPageTitle("Biography");
     setContentClasses("border float-left scrollable");
     startSpinner("biowrapper");
@@ -170,39 +248,17 @@ function BiographyPage() {
 }
 
 function AudioPage() {
+    $('#accordianmenu').liteAccordion('show(6)');
     setPageTitle("Soundclound");
     startSpinner();
     setContentClasses("border scrollable float-left");
-    $.ajax({
-        url: "http://api.soundcloud.com/users/285835/tracks.json?client_id=2d7cc150f9e5813c0d93236b3312654c",
-        async: true,
-        cache: true,
-        success: function(data) {
-            processTracks(data);
-            stopSpinner();
-        },
-        dataType: 'json',
-        beforeSend: setHeader
-    });
-}
 
-function processTracks(tracks) {
-    var frame = '<iframe class="center iframe" src="https://w.soundcloud.com/player/?url=#URL#&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>';
-
-    for (var i = 0; i < tracks.length; i++) {
-        if (tracks[i].embeddable_by === "all") {
-            $('#content').append(frame.replace('#URL', tracks[i].uri));
-        }
-    }
-}
-
-function setHeader(xhr) {
-    if (xhr && xhr.overrideMimeType) {
-        xhr.overrideMimeType("application/j-son;charset=UTF-8");
-    }
+    var sc = new SoundCloud(storage);
+    sc.getData("285835", "#content");
 }
 
 function contactPage() {
+    $('#accordianmenu').liteAccordion('show(7)');
     setPageTitle("Contact Us");
     startSpinner();
     setContentClasses("border float-left");

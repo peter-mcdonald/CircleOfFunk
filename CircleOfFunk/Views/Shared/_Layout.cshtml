@@ -5,45 +5,47 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Circle Of Funk</title>
-        <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
-        <link href="@Url.Content("~/favicon.ico")" rel="icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-    </head>
-    <body>
-        <div id="fb-root"></div>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left" style="margin-bottom: 10px">
-                    @Html.ActionLink(" ", "Index", "Home", null, new { @class = "logo" })
-                </div>
+<head>
+    <meta charset="utf-8" />
+    <title>Circle Of Funk</title>
+    <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
+    <link href="@Url.Content("~/favicon.ico")" rel="icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div id="fb-root"></div>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left" style="margin-bottom: 10px">
+                @Html.ActionLink(" ", "Index", "Home", null, new { @class = "logo" })
+            </div>
+            <div style="height: 208px">
                 @{ Html.RenderPartial("_AccordionMenu"); }
             </div>
-        </header>
-        <div id="body">
-            <section class="content-wrapper main-content clear-fix">
-                <div id="pageTitle" class="fadebar float-left" style="text-align: center"></div>
-                <div id="sentMessage" class="border-message float-left">
-                    Thank you for your message!
-                </div>
-                <div id="content" class="border float-left">
-                </div>
-            </section>
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Circle Of Funk</p>
-                </div>
+    </header>
+    <div id="body">
+        <section class="content-wrapper main-content clear-fix">
+            <div id="pageTitle" class="fadebar float-left" style="text-align: center;height: 70px"></div>
+            <div id="sentMessage" class="border-message float-left">
+                Thank you for your message!
             </div>
-        </footer>
+            <div id="content" class="border float-left">
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - Circle Of Funk</p>
+            </div>
+        </div>
+    </footer>
 
-        @Scripts.Render("~/bundles/site")
-        @RenderSection("scripts", false)
-    </body>
+    @Scripts.Render("~/bundles/site")
+    @RenderSection("scripts", false)
+</body>
 </html>
 <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 <script>

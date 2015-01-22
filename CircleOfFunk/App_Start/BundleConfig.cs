@@ -14,8 +14,11 @@ namespace CircleOfFunk
                             .Include("~/Scripts/spin.js")
                             .Include("~/Scripts/jquery.easy-ticker.js")
                             .Include("~/Scripts/famax-fix.js")
-                            .Include("~/Scripts/history/history.js")
-                            .Include("~/Scripts/history/history.adapter.jquery.js")
+                            .Include("~/Scripts/soundcloud.js")
+                            .Include("~/Scripts/localStorage.js")
+                            .Include("~/Scripts/parseUri-1.2.2.js")
+                            .Include("~/Scripts/history.js/history.js")
+                            .Include("~/Scripts/history.js/history.adapter.jquery.js")
                             .Include("~/Scripts/jquery.unobtrusive*","~/Scripts/jquery.validate*")
                             .Include("~/Scripts/CircleOfFunk.js"));
 
