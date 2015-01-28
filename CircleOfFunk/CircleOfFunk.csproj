@@ -156,6 +156,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Builders\BiographyBuilder.cs" />
     <Compile Include="Builders\SlappedUpSoulBuilder.cs" />
+    <Compile Include="Builders\WordPress.cs" />
     <Compile Include="Controllers\AudioController.cs" />
     <Compile Include="Controllers\CofController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -165,6 +166,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Builders\NewsItemsBuilder.cs" />
     <Compile Include="Builders\DiscographyBuilder.cs" />
+    <Compile Include="Builders\LinksBuilder.cs" />
+    <Compile Include="Controllers\LinksController.cs" />
     <Compile Include="Controllers\SlappedUpSoulController.cs" />
     <Compile Include="Controllers\SocialController.cs" />
     <Compile Include="Extentions\TagExtentions.cs" />
@@ -250,13 +253,16 @@
     <Content Include="Images\Accordion\Slappedupsoul.jpg" />
     <Content Include="Images\Accordion\Social.jpg" />
     <Content Include="Images\Banner\Banner.jpg" />
+    <Content Include="Images\Accordion\Links.png" />
     <Content Include="Images\Loader\famax-loader.gif" />
     <Content Include="Images\News\NewsItem.png" />
+    <Content Include="Images\register.png" />
     <Content Include="Images\Releases\doubletrouble.jpg" />
     <Content Include="Images\Releases\inlove.jpg" />
     <Content Include="Images\Releases\invisible.jpg" />
     <Content Include="Images\Releases\washaway.jpg" />
     <Content Include="Images\Releases\weighaton.jpg" />
+    <Content Include="Images\x.png" />
     <Content Include="Recaptcha for .NET 1.6.0\v4.0\Recaptcha.Web.dll" />
     <Content Include="Scripts\CircleOfFunk.js" />
     <Content Include="Scripts\famax-fix-min.js" />
@@ -282,6 +288,7 @@
     <Content Include="Scripts\jquery.easing.1.3.js" />
     <Content Include="Scripts\jquery.easy-ticker.js" />
     <Content Include="Scripts\jquery.easy-ticker.min.js" />
+    <Content Include="Scripts\jquery.simplemodal-1.4.4.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -291,8 +298,8 @@
     <Content Include="Scripts\liteaccordion.jquery.js" />
     <Content Include="Scripts\liteaccordion.jquery.min.js" />
     <Content Include="Scripts\localStorage.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\parseUri-1.2.2.js" />
+    <Content Include="Scripts\registration.js" />
     <Content Include="Scripts\soundcloud.js" />
     <Content Include="Scripts\spin.js" />
     <Content Include="Scripts\spin.min.js" />

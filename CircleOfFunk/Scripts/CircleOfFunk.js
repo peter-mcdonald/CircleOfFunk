@@ -22,7 +22,8 @@ var arr = {
     "social": "Social",
     "soundcloud": "Audio",
     "traxsource": "Traxsource",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "links": "Links"
 };
 
 pages = {
@@ -57,6 +58,11 @@ function initialiseSite() {
     
     TwitterFollow(document, 'script', 'twitter-wjs');
     facebook(document, 'script', 'facebook-jssdk');
+
+    $('.registerBtn').click(function() {
+        DoRegistration();
+    });
+
 
     var options = {
         containerWidth: 870,
@@ -152,6 +158,10 @@ function showPage(currentPage) {
         case "contact":
             contactPage();
             break;
+            
+        case "links":
+            linksPage();
+            break;
 
         default:
             pages.replacewithhome();
@@ -239,7 +249,7 @@ function BiographyPage() {
     $('#accordianmenu').liteAccordion('show(5)');
     setPageTitle("Biography");
     setContentClasses("border float-left scrollable");
-    startSpinner("biowrapper");
+    startSpinner();
 
     $.post("/biography/GetBiography", function (data) {
         stopSpinner();
@@ -268,6 +278,18 @@ function contactPage() {
         appendData(data);
         setCaptcha();
         $.validator.unobtrusive.parse($("#contactForm"));
+    });
+}
+
+function linksPage() {
+    $('#accordianmenu').liteAccordion('show(8)');
+    setPageTitle("Links");
+    setContentClasses("border float-left scrollable");
+    startSpinner();
+
+    $.post("/Links/GetLinks", function (data) {
+        stopSpinner();
+        appendData(data);
     });
 }
 
@@ -343,6 +365,11 @@ function TwitterFollow(d, s, id) {
         js.src = p + '://platform.twitter.com/widgets.js';
         fjs.parentNode.insertBefore(js, fjs);
     }
+}
+
+function DoRegistration() {
+    var registration = new Registration();
+    registration.Perform();
 }
 
 function appendData(data) {

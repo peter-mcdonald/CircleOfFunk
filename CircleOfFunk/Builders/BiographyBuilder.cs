@@ -1,5 +1,4 @@
-﻿using System.Net.Http;
-using CircleOfFunk.Helpers;
+﻿using CircleOfFunk.Helpers;
 
 namespace CircleOfFunk.Builders
 {
@@ -12,18 +11,8 @@ namespace CircleOfFunk.Builders
                 return SessionHelper.Get<string>("Biography");
             }
 
-            var content = string.Empty;
-
-            using (var client = new HttpClient())
-            {
-                var response = client.GetAsync("http://circleoffunk.wordpress.com/about/").Result;
-                content = response.Content.ReadAsStringAsync().Result;
-            }
-
-            var start = content.IndexOf(@"<!--begin-->") + 12;
-            var end = content.IndexOf(@"<!--end-->");
-
-            var result = content.Substring(start, end - start);
+            var wordpress = new WordPress("http://circleoffunk.wordpress.com/about/");
+            var result = wordpress.ParsePage("begin", "end");
 
             SessionHelper.Add("Biography", result);
 

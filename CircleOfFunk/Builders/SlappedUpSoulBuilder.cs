@@ -14,18 +14,8 @@ namespace CircleOfFunk.Builders
                 return SessionHelper.Get<string>(SlappedUpSoul);
             }
 
-            var content = string.Empty;
-
-            using (var client = new HttpClient())
-            {
-                var response = client.GetAsync("http://slappedupsoul.wordpress.com/about/").Result;
-                content = response.Content.ReadAsStringAsync().Result;
-            }
-
-            var start = content.IndexOf(@"<!--begin-->") + 12;
-            var end = content.IndexOf(@"<!--end-->");
-
-            var result = content.Substring(start, end - start);
+            var wordPress = new WordPress("http://slappedupsoul.wordpress.com/about/");
+            var result = wordPress.ParsePage("begin", "end");
 
             SessionHelper.Add(SlappedUpSoul, result);
 
