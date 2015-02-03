@@ -168,6 +168,7 @@
     <Compile Include="Builders\DiscographyBuilder.cs" />
     <Compile Include="Builders\LinksBuilder.cs" />
     <Compile Include="Controllers\LinksController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\SlappedUpSoulController.cs" />
     <Compile Include="Controllers\SocialController.cs" />
     <Compile Include="Extentions\TagExtentions.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\Session.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -323,6 +325,7 @@
     <Content Include="Scripts\liteaccordion.jquery.min.js.map">
       <DependentUpon>liteaccordion.jquery.js</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\_Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filters\" />

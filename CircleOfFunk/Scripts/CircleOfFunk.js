@@ -198,7 +198,7 @@ function HomePage() {
         mousePause: true,
     };
 
-    $.post("/home/GetNewsItems", function (data) {
+    $.get("/home/GetNewsItems", function (data) {
         stopSpinner();
         $("#content").append(data);
         $('.vticker').easyTicker(tickerOpts);
@@ -211,7 +211,7 @@ function SlappedUpPage() {
     startSpinner();
     setContentClasses("border scrollable float-left");
 
-    $.post("/SlappedUpSoul/GetSlappedUpSoul", function (data) {
+    $.get("/SlappedUpSoul/GetSlappedUpSoul", function (data) {
         stopSpinner();
         $("#content").append(data);
     });
@@ -222,7 +222,7 @@ function DiscographyPage() {
     setPageTitle("Discography");
     setContentClasses("border float-left scrollable");
     startSpinner();
-    $.post("/discography/GetDiscography", function (data) {
+    $.get("/discography/GetDiscography", function (data) {
         stopSpinner();
         appendData(data);
     });
@@ -236,7 +236,7 @@ function SocialPage() {
     
     setContentClasses("border float-left");
 
-    $.post("/Social/GetSocialView", function (data) {
+    $.gett("/Social/GetSocialView", function (data) {
         stopSpinner();
         appendData(data);
         twttr.widgets.load();
@@ -251,7 +251,7 @@ function BiographyPage() {
     setContentClasses("border float-left scrollable");
     startSpinner();
 
-    $.post("/biography/GetBiography", function (data) {
+    $.get("/biography/GetBiography", function (data) {
         stopSpinner();
         appendData(data);
     });
@@ -273,7 +273,7 @@ function contactPage() {
     startSpinner();
     setContentClasses("border float-left");
 
-    $.post("/Contact/GetContactView", function(data) {
+    $.get("/Contact/GetContactView", function(data) {
         stopSpinner();
         appendData(data);
         setCaptcha();
@@ -287,7 +287,7 @@ function linksPage() {
     setContentClasses("border float-left scrollable");
     startSpinner();
 
-    $.post("/Links/GetLinks", function (data) {
+    $.get("/Links/GetLinks", function (data) {
         stopSpinner();
         appendData(data);
     });
@@ -368,7 +368,7 @@ function TwitterFollow(d, s, id) {
 }
 
 function DoRegistration() {
-    var registration = new Registration();
+    var registration = new Registration(storage);
     registration.Perform();
 }
 

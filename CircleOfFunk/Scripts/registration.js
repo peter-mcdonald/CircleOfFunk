@@ -1,9 +1,6 @@
-﻿var Registration = function () {
-};
-
-Registration.prototype.Perform = function () {
-
-    var options = {
+﻿var Registration = function (storage) {
+    this.storage = storage;
+    this.options = {
         onOpen: function (dialog) {
             dialog.overlay.fadeIn('slow', function () {
                 dialog.container.slideDown('slow', function () {
@@ -21,22 +18,36 @@ Registration.prototype.Perform = function () {
             });
         }
     };
-    
-    //$("#element-id").modal({
-    //    onClose: function (dialog) {
-    //        dialog.data.fadeOut('slow', function () {
-    //            dialog.container.slideUp('slow', function () {
-    //                dialog.overlay.fadeOut('slow', function () {
-    //                    $.modal.close(); // must call this!
-    //                });
-    //            });
-    //        });
-    //    }
-    //});
-
-    $('#basic-modal-content').modal(options);
-
-
-
 
 };
+
+Registration.prototype.Perform = function () {
+
+    var url = "/Registration/register";
+
+    if (this.storage.exists(url)) {
+        this.ShowDialog(this.storage.get(url));
+    }
+
+    var that = this;
+
+    $.get(url, function (data) {
+        that.storage.set(url, data);
+        that.ShowDialog(data);
+    });
+
+};
+
+
+Registration.prototype.ShowDialog = function (view) {
+    $.modal(view, this.options);
+
+    Recaptcha.create("6LfLEfsSAAAAANc0vEvzRFg-OSOVKQ92fz6dJoy2",
+    "regcaptcha",
+    {
+        theme: "blackglass",
+        callback: Recaptcha.focus_response_field
+    });
+    
+    $.validator.unobtrusive.parse($("#registerForm"));
+}
