@@ -13,7 +13,8 @@ namespace CircleOfFunk.Controllers
 
         public String GetNewsItems()
         {
-            return new NewsItemsBuilder().Build();
+            var model = new NewsItemsBuilder().Build();
+            return RenderPartialViewToString("_NewsList", model);
         }
     }
 }

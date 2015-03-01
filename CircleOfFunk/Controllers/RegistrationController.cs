@@ -1,4 +1,5 @@
-﻿using CircleOfFunk.Models;
+﻿using System.Web.Mvc;
+using CircleOfFunk.Models;
 
 namespace CircleOfFunk.Controllers
 {
@@ -7,6 +8,13 @@ namespace CircleOfFunk.Controllers
         public string Register()
         {
             return RenderPartialViewToString("_register", new Register());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public void Rwgister()
+        {
+
         }
 
     }

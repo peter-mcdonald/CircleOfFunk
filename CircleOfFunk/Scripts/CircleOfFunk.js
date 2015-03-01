@@ -202,6 +202,7 @@ function HomePage() {
         stopSpinner();
         $("#content").append(data);
         $('.vticker').easyTicker(tickerOpts);
+        $("#newslist").fadeIn("fast")
     });
 }
 

@@ -1,5 +1,4 @@
-﻿using System.Net.Http;
-using CircleOfFunk.Helpers;
+﻿using CircleOfFunk.Helpers;
 
 namespace CircleOfFunk.Builders
 {

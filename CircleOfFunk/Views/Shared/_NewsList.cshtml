@@ -1,0 +1,14 @@
+﻿@using CircleOfFunk.Models
+@using CircleOfFunk.Helpers
+@model IEnumerable<NewsItem>
+
+<ul id="newslist" style="display: none">
+    @foreach (var item in @Model)
+    {
+        <li>
+            <img src="@item.ImageUrl" alt="news"/>
+            <a target="_blank" href="@item.LinkUrl">@item.Title</a>
+            @Html.Paragraph(@item.Body)
+        </li>
+    }
+</ul>

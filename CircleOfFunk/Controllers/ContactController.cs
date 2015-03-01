@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using CircleOfFunk.Builders;
+using CircleOfFunk.EmailBody;
 using CircleOfFunk.Models;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
@@ -29,7 +30,7 @@ namespace CircleOfFunk.Controllers
 
             if (ModelState.IsValid)
             {
-                new EmailBuilder(model).Send();
+                new EmailBuilder(model, new ContactBody(model)).Send();
             }
 
             return string.Empty;

@@ -7,24 +7,9 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset id="contactus">
-        <legend></legend>
+    <fieldset id="register">
+        <legend>Get the latest info in your inbox!</legend>
         <table id="registerdata">
-            <tr>
-                <td>
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Name)
-                    </div>
-                </td>
-                <td>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.Name)
-                    </div>
-                </td>
-                <td>@Html.ValidationMessageFor(model => model.Name)</td>
-            </tr>
-
-
             <tr>
                 <td>
                     <div class="editor-label">

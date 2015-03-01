@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using CircleOfFunk.EmailBody;
 using CircleOfFunk.Models;
 
 namespace CircleOfFunk.Builders
@@ -9,10 +10,12 @@ namespace CircleOfFunk.Builders
     public class EmailBuilder
     {
         readonly Contact contact;
+        private readonly IEmailBody messageBody;
 
-        public EmailBuilder(Contact contact)
+        public EmailBuilder(Contact contact, IEmailBody messageBody)
         {
             this.contact = contact;
+            this.messageBody = messageBody;
         }
 
         public void Send()
@@ -32,14 +35,17 @@ namespace CircleOfFunk.Builders
 
         string BuildMessageBody()
         {
-            var body = new StringBuilder();
-            body.AppendLine("Contact Details : ");
-            body.AppendLine("From : " + contact.Name);
-            body.AppendLine("Email : " + contact.Email);
-            body.AppendLine("Phone : " + contact.Phone);
-            body.AppendLine("Message : " + Environment.NewLine);
-            body.Append(contact.Message);
-            return body.ToString();
+
+            return messageBody.BuildMessageBody();
+
+            //var body = new StringBuilder();
+            //body.AppendLine("Contact Details : ");
+            //body.AppendLine("From : " + contact.Name);
+            //body.AppendLine("Email : " + contact.Email);
+            //body.AppendLine("Phone : " + contact.Phone);
+            //body.AppendLine("Message : " + Environment.NewLine);
+            //body.Append(contact.Message);
+            //return body.ToString();
         }
 
         static SmtpClient GetClient()

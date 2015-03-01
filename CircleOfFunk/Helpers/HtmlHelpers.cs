@@ -26,5 +26,15 @@ namespace CircleOfFunk.Helpers
 
             return new MvcHtmlString(tagBuilder.ToString());
         }
+
+        public static MvcHtmlString Paragraph(this HtmlHelper htmlHelper, string text)
+        {
+            var tagBuilder = new TagBuilder("p")
+                {
+                    InnerHtml = text
+                };
+
+            return new MvcHtmlString(tagBuilder.ToString());
+        }
     }
 }

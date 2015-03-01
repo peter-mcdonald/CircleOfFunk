@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Web.Mvc;
 using System.Xml;
 using CircleOfFunk.Helpers;
+using CircleOfFunk.Models;
 
 namespace CircleOfFunk.Builders
 {
@@ -14,16 +13,15 @@ namespace CircleOfFunk.Builders
         const string defaultNewsImage = @"<img src=""../../Images/News/NewsItem.png"" />""";
         SyndicationFeed feed;
 
-        public string Build()
+        public IEnumerable<NewsItem> Build()
         {
             if (SessionHelper.Exists("NewsList"))
             {
-                return SessionHelper.Get<string>("NewsList");
+                return SessionHelper.Get<IEnumerable<NewsItem>>("NewsList");
             }
 
             CreateNewsFeed();
-            var newsItems = FetchNewsItems();
-            return FormatNewsItems(newsItems);
+            return FetchNewsItems();
         }
 
         void CreateNewsFeed()
@@ -42,40 +40,9 @@ namespace CircleOfFunk.Builders
                                         ImageUrl = ExtractImage(x.ElementExtensions),
                                         Body = RemoveImages(x.Summary.Text)
                                     }).ToList();
+
+            SessionHelper.Add("NewsList", newsItems);
             return newsItems;
-        }
-
-        string FormatNewsItems(IEnumerable<NewsItem> newsItems)
-        {
-            var newslist = new StringBuilder(@"<ul>");
-
-            foreach (var newsItem in newsItems)
-            {
-                newslist.Append("<li>" + CreateImageTag(newsItem.ImageUrl));
-                newslist.Append(CreateExternalLink(newsItem.LinkUrl, newsItem.Title));
-                newslist.Append("<p>" + newsItem.Body + "</p></li>");
-            }
-
-            newslist.Append(@"</ul>");
-
-            SessionHelper.Add("NewsList", newslist.ToString());
-            return newslist.ToString();
-        }
-
-        string CreateImageTag(string imageUrl)
-        {
-            var tagbuilder = new TagBuilder("img");
-            tagbuilder.Attributes["src"] = imageUrl;
-            return tagbuilder.ToString();
-        }
-
-        string CreateExternalLink(string linkUrl, string title)
-        {
-            var tagBuilder = new TagBuilder("a");
-            tagBuilder.Attributes["href"] = linkUrl;
-            tagBuilder.Attributes["target"] = "_blank";
-            tagBuilder.InnerHtml = title;
-            return tagBuilder.ToString();
         }
 
         string RemoveImages(string text)
@@ -102,13 +69,5 @@ namespace CircleOfFunk.Builders
 
             return defaultNewsImage;
         }
-    }
-
-    public class NewsItem
-    {
-        public string Title { get; set; }
-        public string LinkUrl { get; set; }
-        public string ImageUrl { get; set; }
-        public string Body { get; set; }
     }
 }
