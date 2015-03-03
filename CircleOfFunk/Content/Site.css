@@ -1028,7 +1028,7 @@ input[type="checkbox"].input-validation-error {
         padding: 8px;
     }
 
-    #simplemodal-container code {
+    /*#simplemodal-container code {
         background: #141414;
         border-left: 3px solid #65B43D;
         color: #bbb;
@@ -1036,7 +1036,7 @@ input[type="checkbox"].input-validation-error {
         font-size: 12px;
         margin-bottom: 12px;
         padding: 4px 6px 6px;
-    }
+    }*/
 
     #simplemodal-container a {
         color: #ddd;
@@ -1055,11 +1055,9 @@ input[type="checkbox"].input-validation-error {
         }
 
     #simplemodal-container h3 {
-        color: #84b8d9;
-    }
-
-    #simplemodal-container legend {
-        color: #84b8d9;
-        
-        margin: auto;
+        color: #C25DEF;
+        text-align: center;
+        padding-bottom: 20px;
+        font-size: 25px;
+        margin-top: 0;
     }

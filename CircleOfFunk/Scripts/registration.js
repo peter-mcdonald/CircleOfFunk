@@ -39,15 +39,36 @@ Registration.prototype.Perform = function () {
 };
 
 
-Registration.prototype.ShowDialog = function (view) {
+Registration.prototype.ShowDialog = function(view) {
     $.modal(view, this.options);
 
     Recaptcha.create("6LfLEfsSAAAAANc0vEvzRFg-OSOVKQ92fz6dJoy2",
-    "regcaptcha",
-    {
-        theme: "blackglass",
-        callback: Recaptcha.focus_response_field
-    });
-    
+        "regcaptcha",
+        {
+            theme: "blackglass",
+            callback: Recaptcha.focus_response_field
+        });
+
     $.validator.unobtrusive.parse($("#registerForm"));
-}
+};
+
+Registration.prototype.CheckMessage = function(data) {
+    if (data === "") {
+        this.SayThankYou();
+    } else {
+        this.SetRegCaptchaMessage(data);
+    }
+};
+
+Registration.prototype.ClearMessages = function() {
+    $("#regCaptchaMessage").text('');
+    $("#regThankYou").text('');
+};
+
+Registration.prototype.SayThankYou = function() {
+    $("#regThankYou").text("Thanks for registering!");
+};
+
+Registration.prototype.SetRegCaptchaMessage = function(data) {
+    $("#regCaptchaMessage").text(data);
+};

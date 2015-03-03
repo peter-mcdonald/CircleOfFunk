@@ -12,6 +12,7 @@
 var lastPage = "";
 var that;
 var storage;
+var registration;
 var historyJs;
 
 var arr = {
@@ -47,6 +48,7 @@ pages = {
 function initialiseSite() {
 
     storage = new Cache();
+    registration = new Registration(storage);
 
     window.fbAsyncInit = function () {
         FB.init({
@@ -369,8 +371,15 @@ function TwitterFollow(d, s, id) {
 }
 
 function DoRegistration() {
-    var registration = new Registration(storage);
     registration.Perform();
+}
+
+function CheckRegistrationMessage(data) {
+    registration.CheckMessage(data);
+}
+
+function ClearRegMessages() {
+    registration.ClearMessages();
 }
 
 function appendData(data) {

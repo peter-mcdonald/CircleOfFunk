@@ -2,13 +2,14 @@
 @using CircleOfFunk.Helpers
 @model Register
 
-@using (Ajax.BeginForm("Register", "Registration", new AjaxOptions() { HttpMethod = "Post" }, new { id = "registerForm" }))
+@using (Ajax.BeginForm("Register", "Registration", new AjaxOptions() { HttpMethod = "Post", OnBegin = "ClearRegMessages", OnSuccess = "CheckRegistrationMessage" }, new { id = "registerForm" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset id="register">
-        <legend>Get the latest info in your inbox!</legend>
+        <h3>Register to keep up to date with the latest COF happenings</h3>
+        <legend></legend>
         <table id="registerdata">
             <tr>
                 <td>
@@ -26,13 +27,17 @@
             <tr>
                 <td></td>
                 <td id="regcaptcha"></td>
-                <td>@Html.Div("", "field-validation-error", "captchaMessage")</td>
+                <td>@Html.Div("", "field-validation-error", "regCaptchaMessage")</td>
             </tr>
             <tr>
                 <td></td>
                 <td>
                     <input type="submit" class="float-left" value="Register"/>
                 </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.Div("","","regThankYou")</td>
             </tr>
         </table>
     </fieldset>
