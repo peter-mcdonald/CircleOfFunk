@@ -67,6 +67,11 @@ Registration.prototype.ClearMessages = function() {
 
 Registration.prototype.SayThankYou = function() {
     $("#regThankYou").text("Thanks for registering!");
+    
+    setTimeout(function () {
+        $.modal.close();
+    }, 1500);
+
 };
 
 Registration.prototype.SetRegCaptchaMessage = function(data) {

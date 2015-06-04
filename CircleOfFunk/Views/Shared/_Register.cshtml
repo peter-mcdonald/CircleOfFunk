@@ -14,7 +14,8 @@
             <tr>
                 <td>
                     <div class="editor-label">
-                        @Html.LabelFor(model => model.Email)
+                        <label for="Email">Email<br />
+                            Address</label>
                     </div>
                 </td>
                 <td>
@@ -32,12 +33,13 @@
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" class="float-left" value="Register"/>
+                    <input type="submit" class="float-left" value="Register" />
                 </td>
+
             </tr>
             <tr>
                 <td></td>
-                <td>@Html.Div("","","regThankYou")</td>
+                <td>@Html.Div("", "regMessage", "regThankYou")</td>
             </tr>
         </table>
     </fieldset>

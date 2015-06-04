@@ -104,6 +104,14 @@ h5, h6 {
     margin-top: 5px;
 }
 
+.regMessage {
+    color: #C25DEF;
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 25px;
+    margin-top: 0;
+}
+
 #pageTitle {
     width: 60%;
     color: whitesmoke;
